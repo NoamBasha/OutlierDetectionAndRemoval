@@ -41,7 +41,10 @@ class CleaningAlgorithm:
         """
         dtf = pd.read_csv(self.dataset_path, header=None, low_memory=False)
         dtf_without_outliers = dtf.drop(self.outliers_indices)
-        dtf_without_outliers.to_csv(to_path, index=False, header=False)
+        try:
+            dtf_without_outliers.to_csv(to_path, index=False, header=False)
+        except:
+            print("Could not save the file. There might not be permission.")
         
         
 class TreeCleaningAlgorithm(CleaningAlgorithm):

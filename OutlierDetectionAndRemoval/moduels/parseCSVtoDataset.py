@@ -14,7 +14,10 @@ def read_csv_to_df(path, id_col_name, columns):
 
 def copy_without_header(from_path, to_path):
     dtf = pd.read_csv(from_path, low_memory=False)
-    dtf.to_csv(to_path, index=False, header=False)
+    try:
+        dtf.to_csv(to_path, index=False, header=False)
+    except:
+        print("Could not save the file. There might not be permission.")
     
     
 def write_dataset_to_csv(path, dataset):
