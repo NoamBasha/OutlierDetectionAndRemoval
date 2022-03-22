@@ -18,9 +18,12 @@ def copy_without_header(from_path, to_path):
     
     
 def write_dataset_to_csv(path, dataset):
-    with open(path, "w", newline='') as f:
-        writer = csv.writer(f)
-        writer.writerows(dataset)
+    try:
+        with open(path, "w", newline='') as f:
+            writer = csv.writer(f)
+            writer.writerows(dataset)
+    except:
+        print("Could not write a new file. There might not be permission. You can use the CSVs attached.")
 
 
 def brazilian_houses_to_data_set(old_path, new_path):
