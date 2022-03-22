@@ -30,7 +30,10 @@ class CleaningAlgorithm:
             y_outliers = dtf.loc[outliers][y]
             plt.scatter(x_axis, y_axis, color='b')
             plt.scatter(x_outliers, y_outliers, color='r')
-            plt.savefig(f'{x}, {y}')
+            try:
+                plt.savefig(f'{x}, {y}')
+            except:
+                print("Could not save the image. There might not be permission.")
         
     def copy_without_outliers(self, to_path):
         """
